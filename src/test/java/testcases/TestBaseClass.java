@@ -3,9 +3,12 @@ package testcases;
 import java.util.concurrent.TimeUnit;
 
 import org.junit.After;
+import org.junit.Assert;
 import org.junit.Before;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
+
+import testcases.webdriverfactory.WebDriverFactory;
 
 public class TestBaseClass {
 	
@@ -15,10 +18,12 @@ public class TestBaseClass {
     
     @Before
     public void browser_setup() {
-		
-		driver= new FirefoxDriver();
-		driver.manage().window().maximize();
-     driver.manage().timeouts().implicitlyWait(implicit_wait_timeout_in_sec, TimeUnit.SECONDS);
+    	try{
+            driver = WebDriverFactory.getbrowser("chrome");
+        }catch(Exception e){
+            e.printStackTrace();
+            Assert.fail("Incorrect Browser Sent. Check the Stack Trace");
+        }
 	 }
 	 
     @After
