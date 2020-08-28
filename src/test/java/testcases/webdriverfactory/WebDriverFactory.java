@@ -3,6 +3,7 @@ package testcases.webdriverfactory;
 import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 
 public class WebDriverFactory {
@@ -13,7 +14,7 @@ public class WebDriverFactory {
     	
     	switch(browser.toLowerCase()){
         case "chrome":
-            driver = new FirefoxDriver();
+            driver = new ChromeDriver();
             break;
         case "firefox":
             driver = new FirefoxDriver();
