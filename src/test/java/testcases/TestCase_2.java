@@ -15,15 +15,6 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 public class TestCase_2 extends TestBaseClass{
 	
 	
-	 @Before
-     public void browser_setup() {
-		
-		driver= new FirefoxDriver();
-		driver.manage().window().maximize();
-      driver.manage().timeouts().implicitlyWait(implicit_wait_timeout_in_sec, TimeUnit.SECONDS);
-	 }
-	 
-	 
 	 @Test
 		public void Check_website() {
 			
@@ -46,8 +37,5 @@ public class TestCase_2 extends TestBaseClass{
 	 }
 
 	 
-	 @After
-		public void clean_up() {
-			driver.quit();
-		}
+	
 }

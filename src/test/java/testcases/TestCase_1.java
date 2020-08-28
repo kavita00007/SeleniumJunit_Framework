@@ -9,15 +9,6 @@ import org.junit.After;
 import org.junit.Assert;
 public class TestCase_1 extends TestBaseClass{
 	
-	
-	   @Before
-       public void browser_setup() {
-		
-		driver= new FirefoxDriver();
-		driver.manage().window().maximize();
-        driver.manage().timeouts().implicitlyWait(implicit_wait_timeout_in_sec, TimeUnit.SECONDS);
-
-	   }
 	   
 	   @Test
 		public void Check_website() {
@@ -29,10 +20,4 @@ public class TestCase_1 extends TestBaseClass{
 			
 		}
 	   
-	   @After
-		public void clean_up() {
-			driver.quit();
-		}
-	   
-
 }
