@@ -2,6 +2,8 @@ package testcases;
 
 import java.util.concurrent.TimeUnit;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;
@@ -14,7 +16,8 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class TestCase_2 extends TestBaseClass{
 	
-	
+    private static final Logger logger = LogManager.getLogger(TestCase_2.class);
+
 	 @Test
 		public void Check_website() {
 			
@@ -34,6 +37,8 @@ public class TestCase_2 extends TestBaseClass{
 
 	        Assert.assertEquals("Page Title validation","Amazon.in : Mobiles", driver.getTitle());
 	        System.out.println("Page title : " +driver.getTitle());
+	        logger.info("Test case Ended: Website is working");
+
 	 }
 
 	 
