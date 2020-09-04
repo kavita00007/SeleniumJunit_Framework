@@ -1,12 +1,18 @@
 package pageobject;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+
 public class PageobjectClass {
+	
+	private static final Logger logger = LogManager.getLogger(PageobjectClass.class);
+
 
 	
 	private By searchbox = By.id("twotabsearchtextbox");
@@ -28,25 +34,35 @@ public class PageobjectClass {
 	
 	public void SetSearchTextBox(String text) {
 		driver.findElement(searchbox).sendKeys(text);
+		logger.info("Value enetered in search box: " + text);
+
 	}
 	
 	public void ClickOnSearchButton() {
 		driver.findElement(searchbutton).click();
+		logger.info("Clicked on Search Button");
+
 	}
 
 	public void ClickOnHamburgerMenuButton() {
 		driver.findElement(hamburger_menulink).click();
+		logger.info("Clicked on Hamburger Menu Button");
+
 	
 }
 	
 	public void ClickOnHamburgerMenuProductCategoryLink(String linkText) {
 		By byElement = By.xpath(String.format(hamburger_menu_xpath,linkText));
 		driver.findElement(byElement);
+		logger.info("Clicked on Hamburger Menu Category link: " + linkText);
+
 	}
 	
 	public void ClickOnHamburgerMenuProductSubCategoryLink(String linkText) {
 		By byElement = By.xpath(String.format(hamburger_sub_category_xpath,linkText));
 		driver.findElement(byElement).click();
+		logger.info("Clicked on Hamburger Menu SubCategory link: " + linkText);
+
 	}
 
 	public void validateHamBurgerMenuIsDisplayed() {
@@ -62,6 +78,8 @@ public class PageobjectClass {
 		WebDriverWait wait = new WebDriverWait(driver, 30);
 		Boolean b = wait.until(ExpectedConditions.titleContains(expectedTitle));
 		Assert.assertEquals("Title Validation",true, b);
+		logger.info("Page title matched: " + expectedTitle );
+
 	}
 	
 	
@@ -92,15 +110,18 @@ public class PageobjectClass {
 			b = driver.findElement(searchbox).isDisplayed();
 			break;
 		default:
+			logger.fatal("Header Link Description is not present in the case. Please add link description first.");
 			throw new Exception("Header Link Description is not present in the case. Please add link description first.");
 		}
 
 		if (b) 
 		{
-			Assert.assertEquals("Header Link displayed",true, b);
+			logger.info("Header Link is displayed: " + text);
+            Assert.assertEquals("Header Link displayed",true, b);
 		}
 		else 
 		{
+			logger.fatal("Header Link is not displayed: " + text);
 			Assert.fail("Header Link is not displayed: " + text);
 		}
 
